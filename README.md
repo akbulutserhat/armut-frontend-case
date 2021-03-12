@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# armut frontend department case study
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+2021
 
-## Available Scripts
+# Goal
 
-In the project directory, you can run:
+build an armut like job creation process.
 
-### `npm start`
+[design link:](https://www.figma.com/file/9ZaUyZG2KYzCWT4lgPARvi/Armut-Front-End-Development-Case-Study?node-id=0%3A1)
+[prototype link:](https://www.figma.com/proto/9ZaUyZG2KYzCWT4lgPARvi/Armut-Front-End-Development-Case-Study?node-id=17%3A451&viewport=1085%2C277%2C0.15803225338459015&scaling=scale-down)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Description
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- there is a data folder that contains your services and service jsons.
+- examine the design. you will find a "servisler" page that you should supply fromm services.json.
+- when a user clicks a service, he/she should redirect to a path which you should decide and see first question and then next one and next one...
+- every question has a typeid to decide question type. you will find the type descriptions under "Some points to take into account" on figma
+- you should collect all the answers and log them to the console when you show the static success page
+- when I click the "x" button I should see the "servisler" page.
+- when I click "<" button I should jump to previous question.
+- PLEASE NOTICE, YOU HAVE ONLY 3 TYPES OF QUESTION (typeid=8, typeid=6, typeid=5 ). IGNORE OTHER TYPES THAT ARE ON FIGMA
 
-### `npm test`
+# Specification
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- you can use React, Angular or Vue
+- do not use any library except aboves.
+- it will work on the latest versions of Chrome and/or Firefox, and use any bleeding-edge Web API you want.
+- only mobile web (think you open the page with your smartphone's browser)
 
-### `npm run build`
+# What we expect
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- try to be pixel perfect
+- acceptable user experience
+- minumum number of bugs
+- good implementation
+- acceptable/modern code style
+- high performance
+- try to DRY
+- try to KISS
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Bonus points
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- unit tests
+- preproccessors
+- reusable components
+- best practices
 
-### `npm run eject`
+# Notes
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- feel free to ask any question
+- keep the source code private. if you have private github repo, please add me as a contributor; @tnrsvd, if do not please send it as a zip file.
