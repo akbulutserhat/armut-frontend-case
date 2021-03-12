@@ -1,7 +1,11 @@
+import ServiceList from './components/service/List';
+
 const App = () => {
   return (
     <div className='App'>
-      <h1>Hello World</h1>
+      <div className='home-page'>
+        <ServiceList></ServiceList>
+      </div>
     </div>
   );
 };
