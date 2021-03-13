@@ -5,16 +5,14 @@ const DiscountBanner = ({ discountRateText }) => {
     <span className='emphasized-text'>{percentNumber}</span>
   );
   const withoutPercentNumber = discountRateText.split(percentNumber);
-  const modifiedText = [
-    withoutPercentNumber[0],
-    emphasizedPercentNumber,
-    withoutPercentNumber[1],
-  ].join('');
 
-  console.log(modifiedText);
   return (
     <div className='discount-banner'>
-      <p className='medium lh-22'>{discountRateText}</p>
+      <p className='medium lh-22'>
+        {withoutPercentNumber[0]}
+        {emphasizedPercentNumber}
+        {withoutPercentNumber[1]}
+      </p>
     </div>
   );
 };
