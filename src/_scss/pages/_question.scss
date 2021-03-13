@@ -12,14 +12,13 @@
 
 .sticky-button-section {
   padding: 8px 16px;
-  position: absolute;
+  position: sticky;
   width: 100%;
-  top: 525px;
+  bottom: 0;
   background-color: $white;
 
   .button {
     width: 100%;
-    position: sticky;
   }
 }
 
