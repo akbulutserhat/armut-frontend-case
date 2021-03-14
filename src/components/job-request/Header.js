@@ -2,7 +2,7 @@ import { useHistory, useParams } from 'react-router';
 import closeIcon from '../../assets/Close.png';
 import prevIcon from '../../assets/Left.png';
 
-const Header = ({ name, state }) => {
+const Header = ({ name, state, widthOfProgress }) => {
   const history = useHistory();
   const params = useParams();
 
@@ -18,7 +18,9 @@ const Header = ({ name, state }) => {
 
   return (
     <div className='header'>
-      <p className='small lh-18'>{name}</p>
+      <p className='small lh-18'>
+        {widthOfProgress < 66 ? name : `%${widthOfProgress} TAMAMLANDI`}
+      </p>
       <div className='close-icon' onClick={handleCloseIconClicked}>
         <img src={closeIcon}></img>
       </div>

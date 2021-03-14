@@ -5,7 +5,10 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import ProgressBar from './ProgressBar';
 import Question from './question/Question';
 import StickyButton from './StickyButton';
-import { checkIsLastPage } from '../../helpers/page';
+import {
+  checkIsLastPage,
+  calculateWidthOfProgress,
+} from '../../helpers/jobRequest';
 
 const JobRequest = () => {
   const location = useLocation();
@@ -32,11 +35,19 @@ const JobRequest = () => {
 
   const isLastPage = checkIsLastPage(pageNumber, questions.length);
 
+  const widthOfProgress = calculateWidthOfProgress(
+    pageNumber,
+    questions.length
+  );
+
   return (
     <>
       <div className='job-request'>
-        <Header name={name} state={state}></Header>
-        <ProgressBar></ProgressBar>
+        <Header
+          name={name}
+          state={state}
+          widthOfProgress={widthOfProgress}></Header>
+        <ProgressBar widthOfProgress={widthOfProgress}></ProgressBar>
         <PriceDetail price={price}></PriceDetail>
         {discountRateText && pageNumber == 1 && (
           <DiscountBanner discountRateText={discountRateText}></DiscountBanner>
