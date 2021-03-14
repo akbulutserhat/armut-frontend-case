@@ -33,19 +33,21 @@ const JobRequest = () => {
   const isLastPage = checkIsLastPage(pageNumber, questions.length);
 
   return (
-    <div className='job-request'>
-      <Header name={name} state={state}></Header>
-      <ProgressBar></ProgressBar>
-      <PriceDetail price={price}></PriceDetail>
-      {discountRateText && pageNumber == 1 && (
-        <DiscountBanner discountRateText={discountRateText}></DiscountBanner>
-      )}
-      <Question question={question}></Question>
+    <>
+      <div className='job-request'>
+        <Header name={name} state={state}></Header>
+        <ProgressBar></ProgressBar>
+        <PriceDetail price={price}></PriceDetail>
+        {discountRateText && pageNumber == 1 && (
+          <DiscountBanner discountRateText={discountRateText}></DiscountBanner>
+        )}
+        <Question question={question}></Question>
+      </div>
       <StickyButton
         pageNumber={pageNumber}
         state={state}
         isLastPage={isLastPage}></StickyButton>
-    </div>
+    </>
   );
 };
 
