@@ -13,7 +13,7 @@ const Header = ({ name, state }) => {
   };
 
   const handlePrevIconClicked = () => {
-    history.push(`/request/${pageNumber - 1}`, { state });
+    history.push(`/request/${Number(pageNumber) - 1}`, state);
   };
 
   return (

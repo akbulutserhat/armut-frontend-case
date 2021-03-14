@@ -4,6 +4,7 @@ import Header from './Header';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import ProgressBar from './ProgressBar';
 import Question from './question/Question';
+import StickyButton from './StickyButton';
 
 const JobRequest = () => {
   const location = useLocation();
@@ -19,6 +20,7 @@ const JobRequest = () => {
         </Link>
       </div>
     );
+  console.log(pageNumber, state);
   const { service, questions } = state;
   const { name, price, discountRateText } = service;
   const question = questions.filter(
@@ -30,10 +32,11 @@ const JobRequest = () => {
       <Header name={name} state={state}></Header>
       <ProgressBar></ProgressBar>
       <PriceDetail price={price}></PriceDetail>
-      {discountRateText && (
+      {discountRateText && pageNumber == 1 && (
         <DiscountBanner discountRateText={discountRateText}></DiscountBanner>
       )}
       <Question question={question}></Question>
+      <StickyButton pageNumber={pageNumber} state={state}></StickyButton>
     </div>
   );
 };
