@@ -5,12 +5,14 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import ProgressBar from './ProgressBar';
 import Question from './question/Question';
 import StickyButton from './StickyButton';
+import { checkIsLastPage } from '../../helpers/page';
 
 const JobRequest = () => {
   const location = useLocation();
   const params = useParams();
   const { pageNumber } = params;
   const { state } = location;
+
   if (!state)
     return (
       <div className='center'>
@@ -20,13 +22,16 @@ const JobRequest = () => {
         </Link>
       </div>
     );
-  console.log(pageNumber, state);
+
   const { service, questions } = state;
   const { name, price, discountRateText } = service;
+
   const question = questions.filter(
     (question) => question.pageNumber == pageNumber
   )[0];
-  console.log(question);
+
+  const isLastPage = checkIsLastPage(pageNumber, questions.length);
+
   return (
     <div className='job-request'>
       <Header name={name} state={state}></Header>
@@ -36,7 +41,10 @@ const JobRequest = () => {
         <DiscountBanner discountRateText={discountRateText}></DiscountBanner>
       )}
       <Question question={question}></Question>
-      <StickyButton pageNumber={pageNumber} state={state}></StickyButton>
+      <StickyButton
+        pageNumber={pageNumber}
+        state={state}
+        isLastPage={isLastPage}></StickyButton>
     </div>
   );
 };
