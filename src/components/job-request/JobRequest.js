@@ -47,7 +47,6 @@ const JobRequest = () => {
 
   useEffect(() => {
     if (validate.isValid) {
-      console.log(isContinueButton);
       answer = takeAnswerValue(typeId);
       if (isContinueButton) {
         addAnswer(setAnswers, label, answer);
