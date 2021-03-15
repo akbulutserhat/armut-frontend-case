@@ -1,5 +1,5 @@
-export const addAnswer = (setAnswers, answerValue) => {
-  setAnswers((prevAnswers) => [...prevAnswers, answerValue]);
+export const addAnswer = (setAnswers, label, answer) => {
+  setAnswers((prevAnswers) => [...prevAnswers, { question: label, answer }]);
 };
 
 const takeCheckedRadioValue = () => {

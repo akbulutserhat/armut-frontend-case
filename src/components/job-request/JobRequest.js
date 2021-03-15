@@ -53,7 +53,7 @@ const JobRequest = () => {
         pageNumber={pageNumber}
         state={state}
         isLastPage={isLastPage}
-        questionType={question.typeId}></StickyButton>
+        question={question}></StickyButton>
     </>
   );
 };

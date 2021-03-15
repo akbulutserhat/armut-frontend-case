@@ -7,19 +7,20 @@ const StickyButton = ({
   isLastPage,
   setAnswers,
   answers,
-  questionType,
+  question,
 }) => {
   const history = useHistory();
+  const { typeId, label } = question;
 
   const handleClickContinue = () => {
-    const answer = takeAnswerValue(questionType);
-    addAnswer(setAnswers, answer);
+    const answer = takeAnswerValue(typeId);
+    addAnswer(setAnswers, label, answer);
     history.push(`/request/${Number(pageNumber) + 1}`, state);
   };
 
   const handleClickSendRequest = () => {
-    const answer = takeAnswerValue(questionType);
-    answers = [...answers, answer];
+    const answer = takeAnswerValue(typeId);
+    answers = [...answers, { question: label, answer }];
     history.push('/success', { answers });
   };
   return (
