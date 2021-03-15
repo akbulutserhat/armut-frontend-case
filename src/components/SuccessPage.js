@@ -1,6 +1,10 @@
 import success from '../assets/success.png';
+import { useLocation } from 'react-router';
 
 const SuccessPage = () => {
+  const location = useLocation();
+  const { answers } = location.state;
+  console.log(answers);
   return (
     <div className='success-page'>
       <div className='image-text-section'>

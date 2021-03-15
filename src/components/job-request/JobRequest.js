@@ -1,7 +1,7 @@
 import DiscountBanner from './DiscountBanner';
 import PriceDetail from './PriceDetail';
 import Header from './Header';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams, useHistory } from 'react-router-dom';
 import ProgressBar from './ProgressBar';
 import Question from './question/Question';
 import StickyButton from './StickyButton';
@@ -9,22 +9,18 @@ import {
   checkIsLastPage,
   calculateWidthOfProgress,
 } from '../../helpers/jobRequest';
+import { useState } from 'react';
 
 const JobRequest = () => {
   const location = useLocation();
   const params = useParams();
+  const history = useHistory();
   const { pageNumber } = params;
   const { state } = location;
 
-  if (!state)
-    return (
-      <div className='center'>
-        <p>Please don't change url with manually</p>
-        <Link className='home-page-link' to='/'>
-          Go Home
-        </Link>
-      </div>
-    );
+  const [answers, setAnswers] = useState([]);
+
+  if (!state) history.goBack(); // If url was changed manually.
 
   const { service, questions } = state;
   const { name, price, discountRateText } = service;
@@ -39,6 +35,8 @@ const JobRequest = () => {
     pageNumber,
     questions.length
   );
+
+  console.log(answers);
 
   return (
     <>
@@ -55,6 +53,8 @@ const JobRequest = () => {
         <Question question={question}></Question>
       </div>
       <StickyButton
+        answers={answers}
+        setAnswers={setAnswers}
         pageNumber={pageNumber}
         state={state}
         isLastPage={isLastPage}></StickyButton>

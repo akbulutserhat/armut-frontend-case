@@ -25,7 +25,7 @@ const Values = ({ values, typeId, placeHolder }) => {
     case 8:
       valuesHTML = (
         <div className='values medium lh-22 type-8'>
-          <textarea placeholder={placeHolder}></textarea>
+          <textarea placeholder={placeHolder} name='detail'></textarea>
         </div>
       );
       break;
