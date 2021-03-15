@@ -32,4 +32,8 @@ textarea {
     color: $text-lighter;
     @extend .lh-22, .medium;
   }
+
+  &:focus {
+    outline: none;
+  }
 }

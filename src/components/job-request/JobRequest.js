@@ -6,7 +6,12 @@ import ProgressBar from './ProgressBar';
 import Question from './question/Question';
 import StickyButton from './StickyButton';
 import { checkIsLastPage, calculateWidthOfProgress } from '../../helpers/page';
-import { useState } from 'react';
+import {
+  addAnswer,
+  takeAnswerValue,
+  validateAnswer,
+} from '../../helpers/answer';
+import { useState, useEffect } from 'react';
 
 const JobRequest = () => {
   const location = useLocation();
@@ -15,7 +20,12 @@ const JobRequest = () => {
   const { pageNumber } = params;
   const { state } = location;
 
-  const [answers, setAnswers] = useState([]);
+  let [answers, setAnswers] = useState([]);
+  const [validate, setValidate] = useState({ isValid: false, message: '' });
+  let answer;
+
+  // true = continue button, false = send request button
+  let [isContinueButton, setIsContinueButton] = useState(true);
 
   if (!state) history.goBack(); // If url is changed manually.
 
@@ -26,12 +36,44 @@ const JobRequest = () => {
     (question) => question.pageNumber == pageNumber
   )[0];
 
+  const { typeId, label, required } = question;
+
   const isLastPage = checkIsLastPage(pageNumber, questions.length);
 
   const widthOfProgress = calculateWidthOfProgress(
     pageNumber,
     questions.length
   );
+
+  useEffect(() => {
+    if (validate.isValid) {
+      console.log(isContinueButton);
+      answer = takeAnswerValue(typeId);
+      if (isContinueButton) {
+        addAnswer(setAnswers, label, answer);
+        history.push(`/request/${Number(pageNumber) + 1}`, state);
+      } else {
+        answers = [...answers, { question: label, answer }];
+        history.push('/success', { answers });
+      }
+    }
+  }, [validate]);
+
+  const validationProcess = () => {
+    answer = takeAnswerValue(typeId);
+    const { isValid, message } = validateAnswer(answer, required);
+    setValidate({ ...validate, isValid, message });
+  };
+
+  const handleClickContinue = () => {
+    setIsContinueButton(true);
+    validationProcess();
+  };
+
+  const handleClickSendRequest = () => {
+    setIsContinueButton(false);
+    validationProcess();
+  };
 
   return (
     <>
@@ -45,15 +87,12 @@ const JobRequest = () => {
         {discountRateText && pageNumber == 1 && (
           <DiscountBanner discountRateText={discountRateText}></DiscountBanner>
         )}
-        <Question question={question}></Question>
+        <Question question={question} validate={validate}></Question>
       </div>
       <StickyButton
-        answers={answers}
-        setAnswers={setAnswers}
-        pageNumber={pageNumber}
-        state={state}
-        isLastPage={isLastPage}
-        question={question}></StickyButton>
+        handleClickContinue={handleClickContinue}
+        handleClickSendRequest={handleClickSendRequest}
+        isLastPage={isLastPage}></StickyButton>
     </>
   );
 };

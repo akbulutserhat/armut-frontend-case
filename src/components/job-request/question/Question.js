@@ -1,6 +1,6 @@
 import Values from './Values';
 
-const Question = ({ question }) => {
+const Question = ({ question, validate }) => {
   const { typeId, label, values, placeHolder } = question;
   return (
     <div className='question'>
@@ -10,7 +10,8 @@ const Question = ({ question }) => {
       <Values
         values={values}
         typeId={typeId}
-        placeHolder={placeHolder}></Values>
+        placeHolder={placeHolder}
+        validate={validate}></Values>
     </div>
   );
 };

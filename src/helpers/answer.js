@@ -25,3 +25,10 @@ export const takeAnswerValue = (questionType) => {
       return null;
   }
 };
+
+export const validateAnswer = (answer, required) => {
+  if (required && !answer) {
+    return { isValid: false, message: 'Bu alan zorunlu' };
+  }
+  return { isValid: true };
+};
