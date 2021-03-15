@@ -1,23 +1,27 @@
-export const checkIsLastPage = (pageNumber, length) => {
-  return pageNumber == length;
-};
-
-export const calculateWidthOfProgress = (pageNumber, length) => {
-  return Math.floor((Number(pageNumber) / length) * 100);
-};
-
 export const addAnswer = (setAnswers, answerValue) => {
   setAnswers((prevAnswers) => [...prevAnswers, answerValue]);
 };
 
-export const takeCheckedRadioValue = () => {
+const takeCheckedRadioValue = () => {
   return document.querySelector('input[type="radio"]:checked')
     ? document.querySelector('input[type="radio"]:checked').value
     : null;
 };
 
-export const takeDetailValue = () => {
+const takeDetailValue = () => {
   return document.querySelector('textarea').value
     ? document.querySelector('textarea').value
     : null;
+};
+
+export const takeAnswerValue = (questionType) => {
+  switch (questionType) {
+    case 5:
+    case 6:
+      return takeCheckedRadioValue();
+    case 8:
+      return takeDetailValue();
+    default:
+      return null;
+  }
 };

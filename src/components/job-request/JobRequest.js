@@ -5,10 +5,7 @@ import { useLocation, useParams, useHistory } from 'react-router-dom';
 import ProgressBar from './ProgressBar';
 import Question from './question/Question';
 import StickyButton from './StickyButton';
-import {
-  checkIsLastPage,
-  calculateWidthOfProgress,
-} from '../../helpers/jobRequest';
+import { checkIsLastPage, calculateWidthOfProgress } from '../../helpers/page';
 import { useState } from 'react';
 
 const JobRequest = () => {
@@ -20,7 +17,7 @@ const JobRequest = () => {
 
   const [answers, setAnswers] = useState([]);
 
-  if (!state) history.goBack(); // If url was changed manually.
+  if (!state) history.goBack(); // If url is changed manually.
 
   const { service, questions } = state;
   const { name, price, discountRateText } = service;
@@ -35,8 +32,6 @@ const JobRequest = () => {
     pageNumber,
     questions.length
   );
-
-  console.log(answers);
 
   return (
     <>
@@ -57,7 +52,8 @@ const JobRequest = () => {
         setAnswers={setAnswers}
         pageNumber={pageNumber}
         state={state}
-        isLastPage={isLastPage}></StickyButton>
+        isLastPage={isLastPage}
+        questionType={question.typeId}></StickyButton>
     </>
   );
 };

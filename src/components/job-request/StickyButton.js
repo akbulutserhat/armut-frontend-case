@@ -1,5 +1,5 @@
 import { useHistory } from 'react-router';
-import { addAnswer, takeCheckedRadioValue } from '../../helpers/jobRequest';
+import { addAnswer, takeAnswerValue } from '../../helpers/answer';
 
 const StickyButton = ({
   pageNumber,
@@ -7,22 +7,19 @@ const StickyButton = ({
   isLastPage,
   setAnswers,
   answers,
+  questionType,
 }) => {
   const history = useHistory();
 
   const handleClickContinue = () => {
-    const checkedRadioValue = takeCheckedRadioValue();
-    addAnswer(setAnswers, checkedRadioValue);
-
+    const answer = takeAnswerValue(questionType);
+    addAnswer(setAnswers, answer);
     history.push(`/request/${Number(pageNumber) + 1}`, state);
   };
 
   const handleClickSendRequest = () => {
-    const checkedRadioValue = document.querySelector(
-      'input[type="radio"]:checked'
-    )?.value;
-    const detailValue = document.querySelector('textarea').value;
-    answers = [...answers, detailValue];
+    const answer = takeAnswerValue(questionType);
+    answers = [...answers, answer];
     history.push('/success', { answers });
   };
   return (
