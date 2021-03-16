@@ -64,6 +64,12 @@ const JobRequest = () => {
     setValidate({ ...validate, isValid, message });
   };
 
+  const handlePrevIconClicked = () => {
+    answers.pop();
+    setValidate({ isValid: false, message: '' });
+    history.push(`/request/${Number(pageNumber) - 1}`, state);
+  };
+
   const handleClickContinue = () => {
     setIsContinueButton(true);
     validationProcess();
@@ -79,7 +85,7 @@ const JobRequest = () => {
       <div className='job-request'>
         <Header
           name={name}
-          state={state}
+          handlePrevIconClicked={handlePrevIconClicked}
           widthOfProgress={widthOfProgress}></Header>
         <ProgressBar widthOfProgress={widthOfProgress}></ProgressBar>
         <PriceDetail price={price}></PriceDetail>

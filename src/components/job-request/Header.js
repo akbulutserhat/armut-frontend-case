@@ -2,7 +2,7 @@ import { useHistory, useParams } from 'react-router';
 import closeIcon from '../../assets/Close.png';
 import prevIcon from '../../assets/Left.png';
 
-const Header = ({ name, state, widthOfProgress }) => {
+const Header = ({ name, widthOfProgress, handlePrevIconClicked }) => {
   const history = useHistory();
   const params = useParams();
 
@@ -10,10 +10,6 @@ const Header = ({ name, state, widthOfProgress }) => {
 
   const handleCloseIconClicked = () => {
     history.push('/');
-  };
-
-  const handlePrevIconClicked = () => {
-    history.push(`/request/${Number(pageNumber) - 1}`, state);
   };
 
   return (
